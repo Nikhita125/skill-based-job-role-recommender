@@ -201,4 +201,24 @@ B.Tech Computer Science and Engineering Project
 
 This project is developed for educational and academic purposes.
 
+## 📸 Project Screenshots
+
+### 🏠 Home Page
+![Home Page](static/images/home.png)
+
+### 📝 Register Page
+![Register Page](static/images/register.png)
+
+### 🔐 Login Page
+![Login Page](static/images/login.png)
+
+### 🛠️ Skills & Resume Upload
+![Skills Page](static/images/skills.png)
+
+### 💼 Job Recommendations
+![Recommendations](static/images/recommendations.png)
+
+### 📊 Career Dashboard
+![Dashboard](static/images/dashboard.png)
+
 
