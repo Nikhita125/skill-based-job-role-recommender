@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>Job Recommendations</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>Recommended Job Roles</h1>
+
+    <p>
+        <strong>Your Skills:</strong>
+        {{ skills | join(", ") }}
+    </p>
+
+    {% for job in recommendations %}
+
+    <div class="job-card">
+
+        <h2>{{ loop.index }}. {{ job.title }}</h2>
+
+        <div class="score">
+            Match Score: {{ job.match_score }}%
+        </div>
+
+        <p>
+            <strong>Required Skills:</strong>
+        </p>
+
+        <p>
+            {{ job.skills | join(", ") }}
+        </p>
+
+        <p>
+            <strong>About the Role:</strong>
+            {{ job.description }}
+        </p>
+
+        <p>
+            <strong>Experience:</strong>
+            {{ job.experience }}
+        </p>
+<hr>
+
+<h3>Skill Gap Analysis</h3>
+
+{% if job.missing_skills %}
+
+<p>
+    <strong>Missing Skills:</strong>
+</p>
+
+<ul>
+
+    {% for skill in job.missing_skills %}
+
+    <li>{{ skill }}</li>
+
+    {% endfor %}
+
+</ul>
+
+{% else %}
+
+<p>
+    <strong>Skill Gap:</strong>
+    You have all the required skills!
+</p>
+
+{% endif %}
+<hr>
+
+<h3>Learning Path</h3>
+
+{% if job.learning_path %}
+
+<ol>
+
+    {% for item in job.learning_path %}
+
+    <li>{{ item }}</li>
+
+    {% endfor %}
+
+</ol>
+
+{% else %}
+
+<p>
+    You already have the required skills!
+</p>
+
+{% endif %}
+
+    </div>
+
+    {% endfor %}
+
+    <a class="button" href="/skills">
+        Try Again
+    </a>
+
+    <a class="button" href="/dashboard">
+        Dashboard
+    </a>
+
+    <a class="button secondary" href="/logout">
+        Logout
+    </a>
+</div>
+
+</body>
+
+</html>

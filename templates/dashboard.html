@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Career Dashboard</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>Career Dashboard</h1>
+
+    <p class="welcome">
+        Welcome, <strong>{{ username }}</strong>!
+    </p>
+
+    <div class="dashboard-card">
+
+        <h2>🎯 Your Skills</h2>
+
+        {% if skills %}
+
+            <div class="skills-list">
+
+                {% for skill in skills %}
+                    <span class="skill">
+                        {{ skill }}
+                    </span>
+                {% endfor %}
+
+            </div>
+
+        {% else %}
+
+            <p>No skills added yet.</p>
+
+        {% endif %}
+
+    </div>
+
+
+    {% if top_job %}
+
+    <div class="dashboard-card">
+
+        <h2>💼 Top Recommended Job</h2>
+
+        <h3>{{ top_job.title }}</h3>
+
+        <div class="score">
+            {{ top_job.match_score }}% Match
+        </div>
+
+        <div class="progress">
+            <div class="progress-bar"
+                 style="width: {{ top_job.match_score }}%;">
+            </div>
+        </div>
+
+        <p>
+            <strong>Required Skills:</strong>
+            {{ top_job.skills | join(", ") }}
+        </p>
+
+        <p>
+            <strong>Experience:</strong>
+            {{ top_job.experience }}
+        </p>
+
+    </div>
+
+
+    <div class="dashboard-card">
+
+        <h2>📌 Skill Gap</h2>
+
+        {% if top_job.missing_skills %}
+
+            <ul>
+
+                {% for skill in top_job.missing_skills %}
+
+                    <li>{{ skill }}</li>
+
+                {% endfor %}
+
+            </ul>
+
+        {% else %}
+
+            <p>
+                🎉 You have all the required skills!
+            </p>
+
+        {% endif %}
+
+    </div>
+
+
+    <div class="dashboard-card">
+
+        <h2>📚 Learning Path</h2>
+
+        {% if top_job.learning_path %}
+
+            <ol>
+
+                {% for item in top_job.learning_path %}
+
+                    <li>{{ item }}</li>
+
+                {% endfor %}
+
+            </ol>
+
+        {% else %}
+
+            <p>
+                You already have the required skills!
+            </p>
+
+        {% endif %}
+
+    </div>
+
+    {% else %}
+
+        <div class="dashboard-card">
+
+            <h2>No Recommendations Yet</h2>
+
+            <p>
+                Add your skills to get job recommendations.
+            </p>
+
+        </div>
+
+    {% endif %}
+
+
+    <div class="buttons">
+
+        <a class="button"
+           href="/recommend">
+            View Recommendations
+        </a>
+
+        <a class="button"
+           href="/skills">
+            Update Skills
+        </a>
+
+        <a class="button secondary"
+           href="/logout">
+            Logout
+        </a>
+
+    </div>
+
+</div>
+
+</body>
+</html>

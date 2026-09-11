@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>Enter Skills</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>Career Recommendation</h1>
+
+    <h2>Enter Your Skills</h2>
+
+    <form method="POST">
+
+        <label>Your Skills</label>
+
+        <textarea
+            name="skills"
+            placeholder="Python, SQL, Pandas, Machine Learning"
+            required></textarea>
+
+        <label>Experience Level</label>
+
+        <select name="experience">
+
+            <option value="entry">
+                Entry Level
+            </option>
+
+            <option value="mid">
+                Mid Level
+            </option>
+
+            <option value="senior">
+                Senior Level
+            </option>
+
+        </select>
+
+        <button type="submit">
+            Get Recommendations
+        </button>
+
+    </form>
+
+    <hr>
+
+    <h2>OR Upload Resume</h2>
+
+    <form action="/parse_resume"
+          method="POST"
+          enctype="multipart/form-data">
+
+        <input
+            type="file"
+            name="resume"
+            accept=".pdf,.docx"
+            required>
+
+        <button type="submit">
+            Upload Resume
+        </button>
+
+    </form>
+
+    <br>
+
+    <a href="/logout">
+        Logout
+    </a>
+
+</div>
+
+</body>
+
+</html>
