@@ -1,5 +1,10 @@
 # Skill-Based Job Role Recommender with Machine Learning
 
+![Python](https://img.shields.io/badge/Python-3.x-blue)
+![Flask](https://img.shields.io/badge/Flask-Web%20Framework-black)
+![Machine Learning](https://img.shields.io/badge/Machine%20Learning-Scikit--learn-orange)
+![License](https://img.shields.io/badge/License-Educational-green)
+
 ## 📌 Project Overview
 
 Skill-Based Job Role Recommender is a web application that recommends suitable job roles based on a user's skills or uploaded resume.
